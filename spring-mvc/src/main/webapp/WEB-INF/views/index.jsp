@@ -22,7 +22,7 @@
 </script>
 
 <script type="text/javascript">
-	jQuery(document).ready(function($) {
+	$(function($) {
 		$("#micro").click(function(event) {
 
 			$.ajax({
@@ -33,6 +33,29 @@
 
 		});
 	});
-</script>
+	
+	</script>
+	<script type="text/javascript">
+	  function loadData(e) {
+	    e.preventDefault();
+	    $.ajax({
+	    type: "POST",
+	    contentType: "application/json; charset=utf-8",
+	    url: "/spring-mvc/microutenti",
+	    data: "",
+	    dataType: "json",
+	    success: function (data) {
+	      $.map(data.d, function (product) {
+	         $('<tr> <td>' + product.nome + '</td> <td>' + product.cognome + ' </td> <td>' + product.età).appendTo("#nuovo");
+	  });
+	  },
+	  error: function (response) {
+	    alert("Error" + response.responseText);
+	  }
+	});
+	 
+	}
+	 
+	</script>
 
 </html>

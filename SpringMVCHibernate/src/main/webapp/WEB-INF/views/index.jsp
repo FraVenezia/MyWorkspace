@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-Benvenuto
-<a href="person.jsp">Entra </a>"
+	Benvenuto
+	<a href="person.jsp">Entra </a>
 </body>
 </html>
