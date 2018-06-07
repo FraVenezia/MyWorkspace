@@ -1,0 +1,4 @@
+"Apple 50.0 210 B"
+"Samsung 80.0 30 S"
+"Ferrari 40.0 410 B"
+"Acer 20.0 110 S"

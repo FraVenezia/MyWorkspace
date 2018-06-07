@@ -1,0 +1,24 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean
+		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+
+
+
+	<bean id="customer" class="com.mkyong.core.Customer"></bean>
+
+	<bean id="person" class="com.mkyong.core.Person">
+		<property name="name" value="Francesco"></property>
+	</bean>
+
+
+	<!-- <bean id="helloBean" class="com.mkyong.core.HelloWorld"> <constructor-arg 
+		index="0" ref="anagrafica"></constructor-arg> </bean> <bean id="anagrafica" 
+		class="com.mkyong.core.Anagrafica"> <property name="nome" value="Francesco" 
+		/> <property name="cognome" value="Venezia" /> </bean> -->
+
+
+</beans>

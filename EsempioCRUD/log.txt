@@ -1,0 +1,9 @@
+2018-05-21 17:58:11,578 INFO   [JunitTest] Avviato insertUser 
+2018-05-21 17:58:11,578 INFO   [JunitTest] Avviato testUser 
+2018-05-21 17:58:11,874 INFO   [JunitTest] Avviato deleteUser 
+2018-05-21 18:01:50,068 INFO   [JunitTest] Avviato insertUser 
+2018-05-21 18:01:50,069 INFO   [JunitTest] Avviato testUser 
+2018-05-21 18:01:50,374 INFO   [JunitTest] Avviato deleteUser 
+2018-05-21 18:02:06,477 INFO   [JunitTest] Avviato insertUser 
+2018-05-21 18:02:06,478 INFO   [JunitTest] Avviato testUser 
+2018-05-21 18:02:06,770 INFO   [JunitTest] Avviato deleteUser 
