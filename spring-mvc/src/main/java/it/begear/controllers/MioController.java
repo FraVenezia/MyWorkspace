@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,14 +15,13 @@ import it.begear.model.Utente;
 public class MioController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String print()  {
+	public String print(ModelMap model)  {
+		model.addAttribute("message","Ciao come stai?");
 		return "index";
-
 	}
 
 	@RequestMapping(value="/micro", method = RequestMethod.GET)
 	public @ResponseBody String getMicro() {
-		System.out.println("Sono Dentro");
 		return "pippo";
 	}
 
@@ -39,7 +39,6 @@ public class MioController {
 		Utente ut3=new Utente("Mario","Giallo",78);
 		lista.add(ut3);
 		return lista;
-
 	}
 
 }
