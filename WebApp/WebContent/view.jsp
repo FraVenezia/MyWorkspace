@@ -7,6 +7,8 @@
 <title>Benvenuto</title>
 </head>
 <body>
-	<%=("<h1>Accesso effettuato. Benvenuto "+request.getParameter("result")+"</h1>")%>
+	 <%=("<h1>Accesso effettuato. Benvenuto "+request.getParameter("result")+"</h1>")%> 
+	 <br>
+	 <a href="index.html">Home</a>
 </body>
 </html>

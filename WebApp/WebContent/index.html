@@ -1,8 +1,23 @@
 <!DOCTYPE html>
-
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<script type="text/javascript">
+	function getUrlParameter(sParam) {
+		var sPageURL = window.location.search.substring(1);
+		var sURLVariables = sPageURL.split('&');
+		for (var i = 0; i < sURLVariables.length; i++) {
+			var sParameterName = sURLVariables[i].split('=');
+			if (sParameterName[0] == sParam) {
+				return decodeURI(sParameterName[1]);
+			}
+		}
+	}
+	window.onload = function() {
+		var c = getUrlParameter("result");
+		if (c != undefined)
+			document.getElementById("error").innerHTML = c;
+	}
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -11,6 +26,7 @@
 		Password:<br> <input type="text" name="password"> <br>
 		<br> <input id="btnSubmit" type="submit" value="Entra">
 	</form>
+	<h2 id="error"></h2>
 	<br>
 	<a href="MiaServlet?op=lista">Lista Utenti</a>
 	<br>
