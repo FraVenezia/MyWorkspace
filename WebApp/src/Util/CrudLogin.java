@@ -6,13 +6,57 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import Model.Login;
 
 public class CrudLogin {
 	private static Connection conn;
 	private static PreparedStatement stmt;  
 	private static ResultSet rs;
+	protected static SessionFactory sessionFactory;
+
+	private static void setup() {
+
+		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();																				// hibernate.cfg.xml
+
+		try {
+			sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+		} catch (Exception ex) {
+			StandardServiceRegistryBuilder.destroy(registry);
+		}
+	}
+
+	private static void exit() {
+		sessionFactory.close();
+	}
+
+	public static String createLogin(Login usr){
+		Session session=null;
+		try {
+			CrudLogin.setup();
+			session = sessionFactory.openSession();
+			session.beginTransaction();
+			if((session.get(Login.class, usr.getUsername())) != null) {
+
+				return "Inserimento non riuscito.Username non disponibile";
+			}
+			session.save(usr);
+			session.getTransaction().commit();
+		}
+		catch (Exception exc) {
+			System.out.println("Inserimento non riuscito");
+			exc.printStackTrace();
+		}
+		finally {
+			session.close();
+			CrudLogin.exit();
+		}
+		return "Inserimento riuscito";
+	}
 
 	public static int readLogin(Login usr){
 		String usrResult="";

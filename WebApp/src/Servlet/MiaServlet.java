@@ -19,8 +19,8 @@ public class MiaServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("op").equals("login")) {
-			if ((CrudLogin.readLogin(new Login(request.getParameter("nomeUtente"),request.getParameter("password")))==1))			
-					response.sendRedirect("view.jsp?result="+request.getParameter("nomeUtente"));
+			if ((CrudLogin.readLogin(new Login(request.getParameter("username"),request.getParameter("password")))==1))			
+					response.sendRedirect("view.jsp?result="+request.getParameter("username"));
 			else 
 				response.sendRedirect("index.html?result=Accesso negato.Credenziali errate");
 		}
@@ -28,5 +28,7 @@ public class MiaServlet extends HttpServlet {
 			request.getSession().setAttribute("listUtenti", CrudLogin.readListLogin());
 			response.sendRedirect("listaUtenti.jsp");	
 		}
+		if(request.getParameter("op").equals("AddUsr")) 
+				response.sendRedirect("AddUsr.jsp?result="+CrudLogin.createLogin(new Login(request.getParameter("username"),request.getParameter("password"))));	
 	}
 }
