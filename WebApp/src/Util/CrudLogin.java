@@ -21,7 +21,7 @@ public class CrudLogin {
 
 	private static void setup() {
 
-		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();																				// hibernate.cfg.xml
+		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
 
 		try {
 			sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
@@ -48,8 +48,8 @@ public class CrudLogin {
 			session.getTransaction().commit();
 		}
 		catch (Exception exc) {
-			System.out.println("Inserimento non riuscito");
 			exc.printStackTrace();
+			return "Inserimento non riuscito";
 		}
 		finally {
 			session.close();
