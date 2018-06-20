@@ -10,5 +10,6 @@
 		<property name="show_sql">true</property>
 		<!-- Mapping with model class containing annotations -->
 		<mapping class="Model.Login" />
+		<mapping class="Model.Utente" />
 	</session-factory>
 </hibernate-configuration>

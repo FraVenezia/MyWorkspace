@@ -8,12 +8,13 @@
 <title>Aggiungere Utenti</title>
 </head>
 <body>
-	<form id="login" name="login" action="MiaServlet?op=AddUsr"
-		method="POST">
-		Nome Utente:<br> <input type="text" name="username" required>
-		<br> Password:<br> <input type="text" name="password"
-			required> <br> <br> <input id="btnSubmit"
-			type="submit" value="Registra">
+	<form name="login" action="MiaServlet?op=AddUsr" method="POST">
+	    Nome:<br> <input type="text" name="nome" required><br> 
+		Cognome:<br> <input type="text" name="cognome" required><br>
+		Data di nascita:<br> <input type="date" name="data" required><br>  
+		Username:<br> <input type="text" name="username" required><br> 
+		Password:<br> <input type="text" name="password" required><br> 
+		<br> <input id="btnSubmit" type="submit" value="Registra">
 	</form>
 
 	<h3>

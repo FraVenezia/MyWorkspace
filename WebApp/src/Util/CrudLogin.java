@@ -12,6 +12,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import Model.Login;
+import Model.Utente;
 
 public class CrudLogin {
 	private static Connection conn;
@@ -26,6 +27,7 @@ public class CrudLogin {
 		try {
 			sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
 		} catch (Exception ex) {
+			ex.printStackTrace ();
 			StandardServiceRegistryBuilder.destroy(registry);
 		}
 	}
@@ -34,22 +36,24 @@ public class CrudLogin {
 		sessionFactory.close();
 	}
 
-	public static String createLogin(Login usr){
+	public static String createLogin(Utente usr,Login lgn){
 		Session session=null;
 		try {
 			CrudLogin.setup();
 			session = sessionFactory.openSession();
 			session.beginTransaction();
-			if((session.get(Login.class, usr.getUsername())) != null) {
+			if((session.get(Login.class, lgn.getUsername())) != null) {
 
 				return "Inserimento non riuscito.Username non disponibile";
 			}
+			usr.setLogin(lgn);
+			lgn.setUtente(usr);
 			session.save(usr);
 			session.getTransaction().commit();
 		}
 		catch (Exception exc) {
 			exc.printStackTrace();
-			return "Inserimento non riuscito";
+			return "Inserimento non riuscito. Problema di connessione.";
 		}
 		finally {
 			session.close();

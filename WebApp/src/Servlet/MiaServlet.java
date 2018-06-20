@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Model.Login;
+import Model.Utente;
 import Util.CrudLogin;
 
 @WebServlet("/MiaServlet")
@@ -28,6 +29,6 @@ public class MiaServlet extends HttpServlet {
 			response.sendRedirect("listaUtenti.jsp");	
 		}
 		if(request.getParameter("op").equals("AddUsr")) 
-				response.sendRedirect("AddUsr.jsp?result="+CrudLogin.createLogin(new Login(request.getParameter("username"),request.getParameter("password"))));	
+				response.sendRedirect("AddUsr.jsp?result="+CrudLogin.createLogin(new Utente(request.getParameter("nome"),request.getParameter("cognome"),request.getParameter("data")),new Login(request.getParameter("username"),request.getParameter("password"))));	
 	}
 }
