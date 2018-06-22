@@ -25,10 +25,10 @@ public class MiaServlet extends HttpServlet {
 				response.sendRedirect("index.html?result=Accesso negato.Credenziali errate");
 		}
 		if(request.getParameter("op").equals("lista")) {
-			request.getSession().setAttribute("listUtenti", CrudLogin.readListLogin());
+			request.getSession().setAttribute("listUtenti", CrudLogin.readListUtente());
 			response.sendRedirect("listaUtenti.jsp");	
 		}
 		if(request.getParameter("op").equals("AddUsr")) 
-				response.sendRedirect("AddUsr.jsp?result="+CrudLogin.createLogin(new Utente(request.getParameter("nome"),request.getParameter("cognome"),request.getParameter("data")),new Login(request.getParameter("username"),request.getParameter("password"))));	
+				response.sendRedirect("AddUsr.jsp?result="+CrudLogin.createLogin(new Utente(request.getParameter("username"),request.getParameter("nome"),request.getParameter("cognome"),request.getParameter("data")),new Login(request.getParameter("username"),request.getParameter("password"))));	
 	}
 }

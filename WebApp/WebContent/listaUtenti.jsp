@@ -8,15 +8,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
+	<table border="1">
+		<tr>
+			<td>USERNAME</td>
+			<td>NOME</td>
+			<td>COGNOME</td>
+			<td>COMPLEANNO</td>
+		</tr>
 		<c:forEach var="lista" items="${listUtenti}">
 			<tr>
 				<td>${lista.username}</td>
-				<td>${lista.password}</td>
+				<td>${lista.nome}</td>
+				<td>${lista.cognome}</td>
+				<td>${lista.compleanno}</td>
 			</tr>
 		</c:forEach>
 	</table>
 	<br>
-	 <a href="index.html">Home</a>
+	<a href="index.html">Home</a>
 </body>
 </html>

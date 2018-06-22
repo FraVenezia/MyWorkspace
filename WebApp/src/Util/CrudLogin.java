@@ -46,9 +46,9 @@ public class CrudLogin {
 
 				return "Inserimento non riuscito.Username non disponibile";
 			}
-			usr.setLogin(lgn);
-			lgn.setUtente(usr);
+			session.save(lgn);
 			session.save(usr);
+
 			session.getTransaction().commit();
 		}
 		catch (Exception exc) {
@@ -94,14 +94,14 @@ public class CrudLogin {
 		return 0;
 	}
 
-	public static List<Login> readListLogin(){
-		List<Login> usrList=new ArrayList<>();
+	public static List<Utente> readListUtente(){
+		List<Utente> usrList=new ArrayList<>();
 		try {
 			conn = SqlConnection.getConnection();
-			stmt = conn.prepareStatement("SELECT * FROM login");
+			stmt = conn.prepareStatement("SELECT * FROM Utente");
 			rs = stmt.executeQuery();
 			while(rs.next()) {
-				usrList.add(new Login(rs.getString("Username"),rs.getString("Password")));
+				usrList.add(new Utente(rs.getString("Username"),rs.getString("Nome"),rs.getString("Cognome"),rs.getString("Compleanno")));
 			}
 		}
 		catch (SQLException e) {
