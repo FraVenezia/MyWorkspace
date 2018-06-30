@@ -1,0 +1,60 @@
+<div class="jumbotron">
+    <div class="container">
+        <form name="myForm" novalidate>
+            <div class="row">
+                <div class="col-md-2">
+                    <label>Nome</label>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" name="nome" placeholder="Nome" ng-model="formexample.nome" required>
+                </div>
+                <span ng-show="myForm.nome.$invalid">Nome richiesto</span>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <label>Cognome</label>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" name="cognome" placeholder="Cognome" ng-model="formexample.cognome" required>
+                </div>
+                <span ng-show="myForm.cognome.$invalid">Cognome richiesto</span>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <label>E-Mail</label>
+                </div>
+                <div class="col-md-2">
+                    <input type="email" name="email" placeholder="E-Mail" ng-model="formexample.email" required>
+                </div>
+                <span ng-show="myForm.email.$invalid">E-Mail richiesto</span>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6" align-right>
+                    <button ng-disabled="myForm.$invalid" type="button" class="btn btn-primary" ng-click="invioDati()">Invio</button>
+                </div>
+                <div class="col-md-6" align-right>
+                    <button type="button" class="btn btn-danger" ng-click="clear()">Clear</button>
+                </div>
+            </div>
+    </div>
+    </form>
+</div>
+<div class="table-responsive">
+    <table class="table ">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Cognome</th>
+                <th scope="col">E-Mail</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in tab">
+                <td>{{x.nome}}</td>
+                <td>{{x.cognome}}</td>
+                <td>{{x.email}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
