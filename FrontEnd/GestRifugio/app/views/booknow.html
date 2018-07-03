@@ -1,1 +1,39 @@
-<p>This is the booknow view.</p>
+<form name="myForm" novalidate>
+    <div class="row">
+        <div class="col-md-3">
+            <label>Nome</label>
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="nome" placeholder="Nome" ng-model="formexample.nome" required>
+        </div>
+        <div class="col-md-3">
+            <label>Cognome</label>
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="cognome" placeholder="Cognome" ng-model="formexample.cognome" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label>E-Mail</label>
+        </div>
+        <div class="col-md-3">
+            <input type="email" name="email" placeholder="E-Mail" ng-model="formexample.email" required>
+        </div>
+        <div class="col-md-3">
+            <label>Cognome</label>
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="cognome" placeholder="Cognome" ng-model="formexample.cognome" required>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6" align-right>
+            <button ng-disabled="myForm.$invalid" type="button" class="btn btn-primary" ng-click="invioDati()">Invio</button>
+        </div>
+        <div class="col-md-6" align-right>
+            <button type="button" class="btn btn-danger" ng-click="clear()">Clear</button>
+        </div>
+    </div>
+</form>

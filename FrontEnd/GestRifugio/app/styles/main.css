@@ -87,12 +87,11 @@ body {
     border-bottom: 0;
   }
   .img-responsive { 
-    max-width: 100%;
-    height: auto;
     display:block;
   }
+  
   .custom_text{
-    font-family: 'Galada';
+    font-family: 'Galada', cursive !important;
   }
 
   .navbar-nav{
@@ -101,7 +100,15 @@ body {
   }
 
   .img-text{
-    height: 230px;
+    height: 228px;
+    float:left; 
+    margin-right:10px;
+    margin-bottom: 10px;
+  }
+
+  .about{
+    text-align:justify;
+    font-size: 24px;
   }
 
 }
