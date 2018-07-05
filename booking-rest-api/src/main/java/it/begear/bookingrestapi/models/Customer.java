@@ -9,12 +9,12 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class User {
+public class Customer {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@JsonIgnore
-	private Long id;
+	private int iDUser;
 	@NotNull
 	private String nome;
 	@NotNull
@@ -22,14 +22,16 @@ public class User {
 	@NotNull
 	private String email;
 
-	public User() {
+	public Customer() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public User(String nome,String cognome,String email) {
-		this.nome=nome;
-		this.cognome=cognome;
-		this.email=email;
+
+	public int getiDUser() {
+		return iDUser;
+	}
+
+	public void setiDUser(int iDUser) {
+		this.iDUser = iDUser;
 	}
 
 	public String getNome() {
@@ -55,14 +57,6 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
+		
 
 }

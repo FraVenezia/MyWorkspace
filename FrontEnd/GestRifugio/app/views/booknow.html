@@ -1,39 +1,42 @@
-<form name="myForm" novalidate>
+<form name="BookForm" novalidate>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <label>Nome</label>
         </div>
-        <div class="col-md-3">
-            <input type="text" name="nome" placeholder="Nome" ng-model="formexample.nome" required>
+        <div class="col-md-4">
+            <input type="text" name="nome" placeholder="Nome" ng-model="bookform.nome" required>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <label>Cognome</label>
         </div>
-        <div class="col-md-3">
-            <input type="text" name="cognome" placeholder="Cognome" ng-model="formexample.cognome" required>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            <label>E-Mail</label>
-        </div>
-        <div class="col-md-3">
-            <input type="email" name="email" placeholder="E-Mail" ng-model="formexample.email" required>
-        </div>
-        <div class="col-md-3">
-            <label>Cognome</label>
-        </div>
-        <div class="col-md-3">
-            <input type="text" name="cognome" placeholder="Cognome" ng-model="formexample.cognome" required>
+        <div class="col-md-4">
+            <input type="text" name="cognome" placeholder="Cognome" ng-model="bookform.cognome" required>
         </div>
     </div>
     <br>
     <div class="row">
-        <div class="col-md-6" align-right>
-            <button ng-disabled="myForm.$invalid" type="button" class="btn btn-primary" ng-click="invioDati()">Invio</button>
+        <div class="col-md-2">
+            <label>E-Mail</label>
         </div>
-        <div class="col-md-6" align-right>
-            <button type="button" class="btn btn-danger" ng-click="clear()">Clear</button>
+        <div class="col-md-4">
+            <input type="email" name="email" placeholder="E-Mail" ng-model="bookform.email" required>
         </div>
-    </div>
+        <div class="col-md-2">
+            <label>Camera</label>
+        </div>
+        <div class="col-md-4 form-group">
+            <select class="form-control" id="sceltaStanza" ng-model="bookform.stanza" required>
+                <option ng-repeat="stanza in bookform.stanze" value="{{stanza.iDRoom}}">{{stanza.typeroom}} Prezzo: {{stanza.price}}</option>
+            </select>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <button ng-click="invioDati()" type="button" class="btn btn-lg btn-primary active" aria-pressed="true">Prenota</button>
+                <button ng-click="clear()" type="button" class="btn btn-danger btn-lg active" aria-pressed="true">Clear</button>
+            </div>
+        </div>
 </form>
+<br>

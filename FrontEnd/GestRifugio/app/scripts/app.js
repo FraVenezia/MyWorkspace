@@ -34,7 +34,7 @@ angular
       })
       .when('/booknow', {
         templateUrl: 'views/booknow.html',
-        controller: 'BookNowtCtrl',
+        controller: 'BookNowCtrl',
         controllerAs: 'booknow'
       })
       .when('/camere', {
