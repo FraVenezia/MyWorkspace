@@ -4,7 +4,7 @@
             <label>Nome</label>
         </div>
         <div class="col-md-4">
-            <input type="text" name="nome" placeholder="Nome" ng-model="bookform.nome" required>
+            <input type="text" name="nome" placeholder="Nome" ng-model="bookform.nome" required />
         </div>
         <div class="col-md-2">
             <label>Cognome</label>
@@ -26,17 +26,32 @@
         </div>
         <div class="col-md-4 form-group">
             <select class="form-control" id="sceltaStanza" ng-model="bookform.stanza" required>
-                <option ng-repeat="stanza in bookform.stanze" value="{{stanza.iDRoom}}">{{stanza.typeroom}} Prezzo: {{stanza.price}}</option>
+                <option value="" selected disabled hidden>Scegli la Camera</option>
+                <option ng-repeat="stanza in bookform.stanze" value="{{stanza.iDRoom}}">Tipo: {{stanza.typeroom}} Prezzo: {{stanza.price}}€</option>
             </select>
         </div>
-        <br>
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-md-12 text-right">
-                <button ng-click="invioDati()" type="button" class="btn btn-lg btn-primary active" aria-pressed="true">Prenota</button>
-                <button ng-click="clear()" type="button" class="btn btn-danger btn-lg active" aria-pressed="true">Clear</button>
-            </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <label>Chek-In</label>
         </div>
+        <div class="col-md-4">
+            <input class="form-control" type="date" name="in" ng-model="bookform.in" required>
+        </div>
+        <div class="col-md-2">
+            <label>Chek-Out</label>
+        </div>
+        <div class="col-md-4">
+            <input type="date" name="out" ng-model="bookform.out" required>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <button ng-disabled="BookForm.$invalid" ng-click="invioDati()" type="button" class="btn btn-lg btn-primary active" aria-pressed="true">Prenota</button>
+            <button ng-click="clear()" type="button" class="btn btn-danger btn-lg active" aria-pressed="true">Clear</button>
+        </div>
+    </div>
+
 </form>
 <br>
