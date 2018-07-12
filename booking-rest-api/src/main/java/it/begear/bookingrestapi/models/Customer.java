@@ -1,15 +1,19 @@
 package it.begear.bookingrestapi.models;
 
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="iDUser", scope = Customer.class)
 @Entity
 public class Customer {
 
@@ -22,7 +26,7 @@ public class Customer {
 	private String cognome;
 	@NotNull
 	private String email;
-	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Booking> bookings;
 
 	public Customer() {
@@ -60,11 +64,10 @@ public class Customer {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	@JsonIgnore
 	public Set<Booking> getBooking() {
 		return bookings;
 	}
-
 	public void setBooking(Set<Booking> bookings) {
 		this.bookings = bookings;
 	}

@@ -9,7 +9,7 @@ public class Persona {
 	private int iD_Pers;
 	private String nome;
 	private String Cognome;
-	private int et√†;
+	private int et‡;
 	
 	public Persona() {}
 	@Id
@@ -40,12 +40,12 @@ public class Persona {
 		Cognome = cognome;
 	}
 
-	public int getEt√†() {
-		return et√†;
+	public int getEt‡() {
+		return et‡;
 	}
 
-	public void setEt√†(int et√†) {
-		this.et√† = et√†;
+	public void setEt‡(int et‡) {
+		this.et‡= et‡;
 	}
 	
 	

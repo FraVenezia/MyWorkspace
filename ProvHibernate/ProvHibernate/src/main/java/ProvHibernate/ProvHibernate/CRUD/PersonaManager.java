@@ -32,7 +32,7 @@ public class PersonaManager {
 		pers.setiD_Pers(1);
 		pers.setNome("Francesco");
 		pers.setCognome("Venezia");
-		pers.setEt√†(31);
+		pers.setEt‡(31);
 
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -48,7 +48,7 @@ public class PersonaManager {
 		Persona pers = session.get(Persona.class, id);
 		System.out.println("Nome: " + pers.getNome());
 		System.out.println("Cognome: " + pers.getCognome());
-		System.out.println("Et√†: " + pers.getEt√†());
+		System.out.println("Et√†: " + pers.getEt‡());
 		session.close();
 	}
 
@@ -57,7 +57,7 @@ public class PersonaManager {
 		pers.setiD_Pers(2);
 		pers.setNome("Francesco2");
 		pers.setCognome("Venezia2");
-		pers.setEt√†(311);
+		pers.setEt‡(311);
 		
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();

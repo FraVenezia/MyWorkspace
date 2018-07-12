@@ -1,11 +1,19 @@
 package it.begear.bookingrestapi.models;
 
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="iDRoom", scope = Room.class)
 @Entity
 public class Room {
 	@Id
@@ -19,9 +27,12 @@ public class Room {
 	private int beds;
 	@NotNull
 	private double price;
+	@OneToMany(mappedBy = "room",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Bookingroom> bookingroom;
 	
 	public Room() {
 	}
+
 	public int getiDRoom() {
 		return iDRoom;
 	}
@@ -52,4 +63,12 @@ public class Room {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	@JsonIgnore
+	public Set<Bookingroom> getBookingroom() {
+		return bookingroom;
+	}
+	public void setBookingroom(Set<Bookingroom> bookingroom) {
+		this.bookingroom = bookingroom;
+	}
+	
 }

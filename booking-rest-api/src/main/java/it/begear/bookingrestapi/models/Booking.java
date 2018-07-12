@@ -1,14 +1,21 @@
 package it.begear.bookingrestapi.models;
 
 import java.util.Date;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="numbooking", scope = Booking.class)
 @Entity
 public class Booking {
 	@Id
@@ -18,13 +25,13 @@ public class Booking {
 	private Date bookingdate;
 	@NotNull
 	private double pricetotal;
-	@NotNull
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "IDUser")
 	private Customer customer;
+	@OneToMany(mappedBy = "booking", fetch = FetchType.LAZY,cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Bookingroom> bookingroom;
 
 	public Booking() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getNumbooking() {
@@ -66,5 +73,14 @@ public class Booking {
 	public void setUser(Customer customer) {
 		this.customer = customer;
 	}
+
+	public Set<Bookingroom> getBookingroom() {
+		return bookingroom;
+	}
+
+	public void setBookingroom(Set<Bookingroom> bookingroom) {
+		this.bookingroom = bookingroom;
+	}
+	
 
 }

@@ -19,21 +19,29 @@ angular.module('gestRifugioApp')
 
     $scope.invioDati = function () {
       $scope.book.push(angular.copy($scope.bookform))
-      var d = new Date();
-      d.setDate(15);
-      var userObj = {
+      var d=new Date();
+
+      var customerObj = {
         nome: $scope.bookform.nome,
         cognome: $scope.bookform.cognome,
-        email: $scope.bookform.email,
+        email: $scope.bookform.email
+      };
+      var bookingObj = {
         bookingdate: d,
-        pricetotal: 12
       };
 
-      console.log(userObj);
+      var bookingroomObj={
+        checkin : $scope.bookform.in,
+        checkout: $scope.bookform.out,
+      };
 
-      $http.post('http://localhost:8080/inuser', userObj).then(function (response) {
+
+      var Indata = {'customer': customerObj, 'booking': bookingObj, 'bookingroom' : bookingroomObj, 'iDRoom': $scope.bookform.stanza };
+      console.log(Indata);
+
+       $http.post('http://localhost:8080/save', Indata).then(function (response) {
         console.log(response);
-      });
+      }); 
 
       $scope.clear();
     }
@@ -46,5 +54,6 @@ angular.module('gestRifugioApp')
       $scope.bookform.in = "";
       $scope.bookform.out = "";
     }
+    
   });
 
