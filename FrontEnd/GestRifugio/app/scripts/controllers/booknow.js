@@ -19,7 +19,7 @@ angular.module('gestRifugioApp')
 
     $scope.invioDati = function () {
       $scope.book.push(angular.copy($scope.bookform))
-      var d=new Date();
+      var d = new Date();
 
       var customerObj = {
         nome: $scope.bookform.nome,
@@ -30,18 +30,18 @@ angular.module('gestRifugioApp')
         bookingdate: d,
       };
 
-      var bookingroomObj={
-        checkin : $scope.bookform.in,
+      var bookingroomObj = {
+        checkin: $scope.bookform.in,
         checkout: $scope.bookform.out,
       };
 
 
-      var Indata = {'customer': customerObj, 'booking': bookingObj, 'bookingroom' : bookingroomObj, 'iDRoom': $scope.bookform.stanza };
+      var Indata = { 'customer': customerObj, 'booking': bookingObj, 'bookingroom': bookingroomObj, 'iDRoom': $scope.bookform.stanza };
       console.log(Indata);
 
-       $http.post('http://localhost:8080/save', Indata).then(function (response) {
+      $http.post('http://localhost:8080/save', Indata).then(function (response) {
         console.log(response);
-      }); 
+      });
 
       $scope.clear();
     }
@@ -54,6 +54,8 @@ angular.module('gestRifugioApp')
       $scope.bookform.in = "";
       $scope.bookform.out = "";
     }
-    
+
   });
+
+
 

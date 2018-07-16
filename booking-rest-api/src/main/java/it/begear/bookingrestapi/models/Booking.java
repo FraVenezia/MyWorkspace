@@ -11,24 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="numbooking", scope = Booking.class)
+//@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="numbooking", scope = Booking.class)
 @Entity
 public class Booking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int numbooking;
-	@NotNull
 	private Date bookingdate;
-	@NotNull
 	private double pricetotal;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "IDUser")
 	private Customer customer;
-	@OneToMany(mappedBy = "booking", fetch = FetchType.LAZY,cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "booking", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	private Set<Bookingroom> bookingroom;
 
 	public Booking() {
@@ -66,14 +61,6 @@ public class Booking {
 		this.customer = customer;
 	}
 
-	public Customer getUser() {
-		return customer;
-	}
-
-	public void setUser(Customer customer) {
-		this.customer = customer;
-	}
-
 	public Set<Bookingroom> getBookingroom() {
 		return bookingroom;
 	}
@@ -81,6 +68,6 @@ public class Booking {
 	public void setBookingroom(Set<Bookingroom> bookingroom) {
 		this.bookingroom = bookingroom;
 	}
-	
+
 
 }

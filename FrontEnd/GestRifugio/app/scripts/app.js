@@ -17,7 +17,10 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.grid',
+    'ui.grid.selection',
+    'ui.grid.pinning'
   ])
   .config(function ($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('');
@@ -51,6 +54,11 @@ angular
         templateUrl: 'views/manage.html',
         controller: 'ManageCtrl',
         controllerAs: 'manage'
+      })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
       })
       .otherwise({
         redirectTo: '/'

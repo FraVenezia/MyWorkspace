@@ -1,0 +1,23 @@
+<div class="container">
+    <center>
+        <p>
+            <strong>Login Page</strong>
+        </p>
+    </center>
+    <form class="form">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="login.username" placeholder="username" required="" />
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="form-control" ng-model="login.password" placeholder="password" required="" />
+                </div>
+
+                <div class="form-group">
+                    <button ng-click="formSubmit()" type="submit" class="btn btn-success">Login</button>
+                    <span class="text-danger" style="color:red">{{ error }}</span>
+                </div>
+            </div>
+    </form>
+</div>

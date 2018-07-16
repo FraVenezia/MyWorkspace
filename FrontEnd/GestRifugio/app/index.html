@@ -10,6 +10,7 @@
   <!-- build:css(.) styles/vendor.css -->
   <!-- bower:css -->
   <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="/bower_components/angular-ui-grid/ui-grid.min.css">
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
@@ -63,7 +64,7 @@
     </nav>
   </div>
 
-  <div class="container">
+  <div class="container-fluid">
     <div ng-view=""></div>
   </div>
 
@@ -74,7 +75,7 @@
           <span class="glyphicon glyphicon-copyright-mark"></span> Java team</p>
         </div>
         <div class="col-md-6" align="right">
-          <a ng-href="#/manage">
+          <a ng-href="#/login">
             <img src="images/login.png">
           </a>
         </div>
@@ -110,6 +111,7 @@
   <script src="/bower_components/angular-route/angular-route.js"></script>
   <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
   <script src="/bower_components/angular-touch/angular-touch.js"></script>
+  <script src="/bower_components/angular-ui-grid/ui-grid.min.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -121,6 +123,7 @@
   <script src="scripts/controllers/contattaci.js"></script>
   <script src="scripts/controllers/camere.js"></script>
   <script src="scripts/controllers/manage.js"></script>
+  <script src="scripts/controllers/login.js"></script>
   <!-- endbuild -->
 </body>
 

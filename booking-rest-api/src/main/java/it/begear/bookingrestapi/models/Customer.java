@@ -8,23 +8,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="iDUser", scope = Customer.class)
+//@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="iDUser", scope = Customer.class)
 @Entity
 public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int iDUser;
-	@NotNull
 	private String nome;
-	@NotNull
 	private String cognome;
-	@NotNull
 	private String email;
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Booking> bookings;

@@ -18,13 +18,25 @@ public class BookingController {
 
 	@Autowired
 	private BookingRepository bookingRepository;
-
+	
 	@GetMapping("booking")
-	public List<Booking> rooms() {
+	public List<Booking> booking() {
 		LOGGER.info("sono in booking");
 		return (List<Booking>) bookingRepository.findAll();
 	}
-
+	
+//	@GetMapping("bookingall")
+//	public Iterable<Booking> rooms() {
+//		LOGGER.info("sono in bookingall");
+//		Iterable<Booking> findAll = bookingRepository.findAll();
+//		for (Booking booking : findAll) {
+//			  Hibernate.initialize(booking.getCustomer());
+//			  Hibernate.initialize(booking.getBookingroom());
+//			  booking.setCustomer(booking.getCustomer());
+//			  booking.setBookingroom(booking.getBookingroom());
+//		}
+//		return findAll;
+	
 //	@PostMapping("savebooking")
 //	public ResponseEntity<Customer> createStudent(@RequestBody Booking booking) {
 //		Booking savedBooking = bookingRepository.save(booking);

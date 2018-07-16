@@ -8,24 +8,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="iDRoom", scope = Room.class)
+//@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="iDRoom", scope = Room.class)
 @Entity
 public class Room {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int iDRoom;
-	@NotNull
 	private int num;
-	@NotNull
 	private String typeroom;
-	@NotNull
 	private int beds;
-	@NotNull
 	private double price;
 	@OneToMany(mappedBy = "room",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Bookingroom> bookingroom;

@@ -10,34 +10,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
-
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="idbookingroom", scope = Bookingroom.class)
+
+//@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="idbookingroom", scope = Bookingroom.class)
 @Entity
 public class Bookingroom {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idbookingroom;
-	@NotNull
 	private Date checkin;
-	@NotNull
 	private Date checkout;
-	@NotNull
 	private double price;
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "Numbooking")
 	private Booking booking;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "IDRoom")
 	private Room room;
 
 	public Bookingroom() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public int getIdbookingroom() {
