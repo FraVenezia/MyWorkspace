@@ -20,7 +20,8 @@ angular
     'ngTouch',
     'ui.grid',
     'ui.grid.selection',
-    'ui.grid.pinning'
+    'ui.grid.pinning',
+    '720kb.datepicker'
   ])
   .config(function ($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('');

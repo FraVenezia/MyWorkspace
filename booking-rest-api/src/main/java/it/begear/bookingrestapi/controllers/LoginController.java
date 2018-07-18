@@ -1,7 +1,6 @@
 package it.begear.bookingrestapi.controllers;
 
-import java.util.Optional;
-
+import java.util.NoSuchElementException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +23,13 @@ public class LoginController {
 	@PostMapping("login")
 	public int login(@RequestBody Login log) {
 		LOGGER.info("Sono nel Login");
-		if (log.getPassword().equals(loginRepository.findById(log.getUsername()).get().getPassword()))
-			return 1;
-		else
-			return 0;
+		try {
+			if (log.getPassword().equals(loginRepository.findById(log.getUsername()).get().getPassword()))
+				return 1;
+		} catch (NoSuchElementException exc) {
+
+		}
+		return 0;
 	}
 
 }

@@ -9,6 +9,7 @@
  */
 angular.module('gestRifugioApp')
   .controller('BookNowCtrl', function ($scope, $http) {
+
     $scope.bookform = {};
     $scope.book = [];
 
@@ -54,7 +55,6 @@ angular.module('gestRifugioApp')
       $scope.bookform.in = "";
       $scope.bookform.out = "";
     }
-
   });
 
 

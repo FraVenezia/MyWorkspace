@@ -1,3 +1,4 @@
+
 package it.begear.bookingrestapi.models;
 
 import java.util.Date;
