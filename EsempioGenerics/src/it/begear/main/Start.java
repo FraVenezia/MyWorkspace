@@ -18,7 +18,6 @@ public class Start {
 		var2.setParametro("Ciao");
 		System.out.println(var2.getParametro());
 		
-		
 	}
 	
 	public static <T> void stampaArray(T[] inputArray) {
