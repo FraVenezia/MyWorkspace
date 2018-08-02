@@ -13,32 +13,36 @@ import com.ibm.watson.developer_cloud.conversation.v1.model.InputData;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
 
+import it.begear.bookingrestapi.models.OptionsChat;
+
 @CrossOrigin(origins = { "http://localhost:9000" }, maxAge = 3000)
 @RestController
 public class BotController {
 
 	public final static Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 	private MessageOptions options;
-	private Conversation service;
-	private MessageResponse response; 
+	private Conversation  service;
+	private final String USERNAME="fd9736ac-06d4-4d08-a367-92c56cb66279";
+	private final String PASSWORD="WctSkRcVDi61";
+	private final String WORKSPACES_ID="11f1a0a8-f74d-4c9a-aad5-632f1c421486";
 
 	@GetMapping("botGo")
 	public MessageResponse ChatBotGo() {
 		LOGGER.info("Avvio ChatBot");
 		service = new Conversation("2018-07-26");
-		service.setUsernameAndPassword("af180e54-1524-4403-aaa3-d4c0fee21bb3", "J2soLiLudxjC");
-		options = new MessageOptions.Builder("78e601a1-e72f-48a9-b812-f18c6cd5ea12").build();
-		response = service.message(options).execute();
+		service.setUsernameAndPassword(USERNAME,PASSWORD);
+		options = new MessageOptions.Builder(WORKSPACES_ID).build();
+		MessageResponse response = service.message(options).execute();
 		return response;
 	}
-	
+
 	@PostMapping("bot")
-	public MessageResponse ChatBot(@RequestBody String request) {
+	public MessageResponse ChatBot(@RequestBody OptionsChat optionsChat) {
 		LOGGER.info("Continuo ChatBot");
-		Context context=response.getContext();
-		InputData input = new InputData.Builder(request).build();
-		options= options.newBuilder().input(input).context(context).build();
-		return service.message(options).execute();
+		InputData input = new InputData.Builder(optionsChat.getRequest()).build();
+		options=options.newBuilder().input(input).context(optionsChat.getResponse().getContext()).build();
+		MessageResponse response = service.message(options).execute();
+		return response;
 	}
 
 }
