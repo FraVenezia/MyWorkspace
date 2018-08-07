@@ -36,6 +36,7 @@ public class BotController {
 		return response;
 	}
 
+	
 	@PostMapping("bot")
 	public MessageResponse ChatBot(@RequestBody OptionsChat optionsChat) {
 		LOGGER.info("Continuo ChatBot");
