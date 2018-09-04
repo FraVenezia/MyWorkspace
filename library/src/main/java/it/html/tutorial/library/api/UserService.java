@@ -47,8 +47,8 @@ public class UserService {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
-		JSONArray jsonArrayPDV = JsonPath.parse(name).read("$..name",JSONArray.class);
-		return jsonArrayPDV.toJSONString();
+		JSONArray json = JsonPath.parse(name).read("$..name",JSONArray.class);
+		return json.toJSONString();
 
 	}
 
