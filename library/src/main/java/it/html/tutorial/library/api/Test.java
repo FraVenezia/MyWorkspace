@@ -6,10 +6,10 @@ import javax.ws.rs.PathParam;
 
 @Path("test")
 public class Test {
-     
-    @GET
-    @Path("{name}")
-    public String test(@PathParam("name") String name) {
-        return "Ciao " + name.toUpperCase();
-    }
+
+	@GET
+	@Path("{name}")
+	public String test(@PathParam("name") String name) {
+		return "Ciao " + name.toUpperCase();
+	}
 }
