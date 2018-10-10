@@ -1,0 +1,10 @@
+it\accenture\batch\RestListner.class
+it\accenture\batch\BatchConfiguration.class
+it\accenture\batch\BatchConfiguration$1.class
+it\accenture\batch\RecordProcessor.class
+it\accenture\batch\BatchConfiguration$1$1.class
+it\accenture\batch\MultiResourcePartitioner.class
+it\accenture\batch\BatchConfiguration$1$2.class
+it\accenture\batch\JobCompletionNotificationListener.class
+it\accenture\batch\Application.class
+it\accenture\batch\Record.class
